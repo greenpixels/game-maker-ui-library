@@ -1,0 +1,51 @@
+{
+  "resourceType": "GMProject",
+  "resourceVersion": "1.6",
+  "name": "game_maker_ui_library",
+  "resources": [
+    {"id":{"name":"scr_gm_ui_enums","path":"scripts/scr_gm_ui_enums/scr_gm_ui_enums.yy",},"order":0,},
+    {"id":{"name":"spr_button_positive","path":"sprites/spr_button_positive/spr_button_positive.yy",},"order":0,},
+    {"id":{"name":"obj_gm_ui_button","path":"objects/obj_gm_ui_button/obj_gm_ui_button.yy",},"order":0,},
+    {"id":{"name":"obj_gm_ui_element","path":"objects/obj_gm_ui_element/obj_gm_ui_element.yy",},"order":0,},
+    {"id":{"name":"shd_brightness","path":"shaders/shd_brightness/shd_brightness.yy",},"order":0,},
+    {"id":{"name":"scr_gm_ui_utils","path":"scripts/scr_gm_ui_utils/scr_gm_ui_utils.yy",},"order":2,},
+    {"id":{"name":"scr_gm_ui_error_messages","path":"scripts/scr_gm_ui_error_messages/scr_gm_ui_error_messages.yy",},"order":1,},
+    {"id":{"name":"obj_gm_ui_list","path":"objects/obj_gm_ui_list/obj_gm_ui_list.yy",},"order":1,},
+    {"id":{"name":"demo_room","path":"rooms/demo_room/demo_room.yy",},"order":0,},
+  ],
+  "Options": [
+    {"name":"HTML5","path":"options/html5/options_html5.yy",},
+    {"name":"Linux","path":"options/linux/options_linux.yy",},
+    {"name":"macOS","path":"options/mac/options_mac.yy",},
+    {"name":"Windows","path":"options/windows/options_windows.yy",},
+    {"name":"operagx","path":"options/operagx/options_operagx.yy",},
+    {"name":"Main","path":"options/main/options_main.yy",},
+  ],
+  "defaultScriptType": 1,
+  "isEcma": false,
+  "configs": {
+    "name": "Default",
+    "children": [],
+  },
+  "RoomOrderNodes": [
+    {"roomId":{"name":"demo_room","path":"rooms/demo_room/demo_room.yy",},},
+  ],
+  "Folders": [
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"GM UI LIBRARY","folderPath":"folders/GM UI LIBRARY.yy","order":9,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Extended Objects","folderPath":"folders/GM UI LIBRARY/Extended Objects.yy","order":7,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Global","folderPath":"folders/GM UI LIBRARY/Global.yy","order":8,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Shaders","folderPath":"folders/GM UI LIBRARY/Shaders.yy","order":9,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprites","folderPath":"folders/GM UI LIBRARY/Sprites.yy","order":10,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Rooms.yy","order":0,},
+  ],
+  "AudioGroups": [
+    {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},
+  ],
+  "TextureGroups": [
+    {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","isScaled":true,"compressFormat":"bz2","loadType":"default","directory":"","autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,},
+  ],
+  "IncludedFiles": [],
+  "MetaData": {
+    "IDEVersion": "2022.11.0.54",
+  },
+}
