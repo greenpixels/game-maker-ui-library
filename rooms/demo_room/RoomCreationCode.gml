@@ -1,6 +1,6 @@
 list1 = instance_create_depth(50, 50, depth, obj_gm_ui_vertical_list);
 button1 = instance_create_depth(0, 0, depth, obj_gm_ui_button_primary );
-button1.text_content = "Button 1";
+button1.text_content = "Hide   ->";
 button2 = instance_create_depth(0, 0, depth, obj_gm_ui_button_secondary);
 button2.text_content = "Button 2";
 button3 = instance_create_depth(0, 0, depth, obj_gm_ui_button_secondary);
@@ -30,22 +30,22 @@ textbox2.text_content = "This is a vertical list with text-elements. But rows al
 row = instance_create_depth(0, 0, depth, obj_gm_ui_row);
 row.set_margin(5);
 row.set_padding(0);
-button_in_row = instance_create_depth(0, 0, depth, obj_gm_ui_button_secondary);
+button_in_row = instance_create_depth(0, 0, depth, obj_gm_ui_button_primary);
 button_in_row.set_padding(10);
 button_in_row.set_margin(0);
 button_in_row.margin_right = 10;
-button_in_row.text_content = "Click HERE to hide ->";
-textbox_in_row = instance_create_depth(0, 0, depth, obj_gm_ui_textbox);
-textbox_in_row.text_content = "Hide me!";
-textbox_in_row.set_padding(10);
-textbox_in_row.set_margin(0);
+button_in_row.text_content = "Disable";
+other_button_in_row = instance_create_depth(0, 0, depth, obj_gm_ui_button_secondary);
+other_button_in_row.text_content = "Some Button That Can Be Disabled";
+other_button_in_row.set_padding(10);
+other_button_in_row.set_margin(0);
 button_in_row.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
-	textbox_in_row.set_visibility(!textbox_in_row.hidden);
+	other_button_in_row.set_disabled(!other_button_in_row.disabled);
 });
 button1.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
 	list2.set_visibility(!list2.hidden);
 });
-row.add_childs([button_in_row, textbox_in_row]);
+row.add_childs([button_in_row, other_button_in_row]);
 textbox3 = instance_create_depth(0, 0, depth, obj_gm_ui_textbox);
 textbox3.set_margin(5);
 textbox3.text_content = "Take a look at the code for this demo over at GitHub to find out more.";
