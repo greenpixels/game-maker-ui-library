@@ -159,7 +159,6 @@ This is the template object of this project. This object can be extended by sett
 ##### Variables That Should Mostly Be Handled As Read-Only<!-- omit from toc -->
 | Name | Type |Description|
 |---|---|---|
-
 |disabled|Boolean|Whether interaction with this element is prevented|
 |hidden|Boolean|Whether the element is visible|
 |redraw_in_next_frame|bool|Triggers a redraw to the surface in the next frame when true|
