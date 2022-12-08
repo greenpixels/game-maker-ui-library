@@ -74,17 +74,17 @@ function break_text(_text, _max_width) {
  * @param {real} _y Vertical position of the box to fit the image to
  * @param {real} _width Width of the box to fit the image to
  * @param {real} _height Height of the box to fit the image to
- * @param {IMAGE_FIT} _fitting_style Enum: ImageFit
+ * @param {UI_IMAGE_FIT} _fitting_style Enum: ImageFit
  */
 function draw_sprite_fitted(_image, _image_index, _x, _y, _width, _height, _fitting_style) {
 	if(!sprite_exists(_image)) return;
 	
 	switch(_fitting_style) {
-		case IMAGE_FIT.STATIC:
+		case UI_IMAGE_FIT.STATIC:
 			draw_sprite(_image, _image_index, _x, _y);
 			break;
 				
-		case IMAGE_FIT.KEEP_ASPECT:
+		case UI_IMAGE_FIT.KEEP_ASPECT:
 			var _w = sprite_get_width(_image);
 			var _h = sprite_get_height(_image);
 			var _w_factor = _width / _w;
@@ -92,7 +92,7 @@ function draw_sprite_fitted(_image, _image_index, _x, _y, _width, _height, _fitt
 			draw_sprite_stretched(_image, _image_index, _x, _x, _w * min(_w_factor, _h_factor), _h * min(_w_factor, _h_factor));
 			break;
 				
-		case IMAGE_FIT.SCALED:
+		case UI_IMAGE_FIT.SCALED:
 			draw_sprite_stretched(_image, _image_index, _x, _y, _width, _height);
 			break;
 	}

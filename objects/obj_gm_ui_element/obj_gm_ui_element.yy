@@ -63,10 +63,10 @@
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"redraw_in_next_frame","varType":3,"value":"False","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"room_x","varType":0,"value":"x","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"room_y","varType":0,"value":"y","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"image_fit","varType":6,"value":"IMAGE_FIT.STATIC","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[
-        "IMAGE_FIT.SCALED",
-        "IMAGE_FIT.STATIC",
-        "IMAGE_FIT.KEEP_ASPECT",
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"image_fit","varType":6,"value":"UI_IMAGE_FIT.STATIC","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[
+        "UI_IMAGE_FIT.SCALED",
+        "UI_IMAGE_FIT.STATIC",
+        "UI_IMAGE_FIT.KEEP_ASPECT",
       ],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"text_content","varType":2,"value":"\"\"","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"text_font","varType":5,"value":"noone","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[
@@ -86,9 +86,9 @@
       ],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"text_x_offset","varType":0,"value":"0","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"text_y_offset","varType":0,"value":"0","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"text_overflow","varType":6,"value":"TEXT_OVERFLOW.EXTEND","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[
-        "TEXT_OVERFLOW.HIDE",
-        "TEXT_OVERFLOW.EXTEND",
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"text_overflow","varType":6,"value":"UI_TEXT_OVERFLOW.EXTEND","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[
+        "UI_TEXT_OVERFLOW.HIDE",
+        "UI_TEXT_OVERFLOW.EXTEND",
       ],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"text_width","varType":0,"value":"0","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"text_height","varType":0,"value":"0","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},

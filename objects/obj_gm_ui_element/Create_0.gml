@@ -84,7 +84,7 @@ function layout_text() {
 	text_width = string_width(text_content);
 	text_height = string_height(text_content);
 	
-	if(text_overflow == TEXT_OVERFLOW.EXTEND) {	
+	if(text_overflow == UI_TEXT_OVERFLOW.EXTEND) {	
 		if(max_width != undefined) {
 			// Break text on maximum width
 			text_content = break_text(text_content, max_width - padding_left - padding_right);

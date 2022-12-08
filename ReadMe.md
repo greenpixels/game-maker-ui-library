@@ -16,6 +16,7 @@
       - [Methods](#methods-2)
   - [Enums](#enums)
   - [Global Util Functions](#global-util-functions)
+
 # About 
 GM UI LIBRARY is a package for Game Maker 2.x including objects that can be used to easily create a dynamic interface. Game Maker 2.x currently does not have the ability to easily create an user interface. GM UI LIBRARY tries to make that process easier. Anyone and everyone is invited to contribute to this project.
 # How To Install
@@ -188,13 +189,13 @@ Enums used in this project
 |.ON_MOUSE_PRESSED|
 |.ON_MOUSE_RELEASED|
 
-|IMAGE_FIT|
+|UI_IMAGE_FIT|
 |---|
 |.SCALED|
 |.STATIC|
 |.KEEP_ASPECT|
 
-|TEXT_OVERFLOW|
+|UI_TEXT_OVERFLOW|
 |---|
 |.EXTEND|
 |.HIDE|
