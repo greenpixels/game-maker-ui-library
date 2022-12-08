@@ -178,13 +178,7 @@ function add_child(_ui_element) {
 function add_childs(_ui_elements) {
 	for(var _i = 0; _i < array_length(_ui_elements); _i++) {
 		var _ui_element = array_get(_ui_elements, _i);
-		if(!object_is_ancestor(_ui_element.object_index, obj_gm_ui_element) and _ui_element.object_index != obj_gm_ui_element) {
-			throw (NOT_AN_UI_ELEMENT_ERROR);
-		} else {
-			ds_list_add(children, _ui_element);
-			_ui_element.parent = self;
-			update();
-		}
+		add_child(_ui_element);
 	}
 }
 	
