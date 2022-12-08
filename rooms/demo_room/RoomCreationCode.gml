@@ -7,11 +7,18 @@ button3 = instance_create_depth(0, 0, depth, obj_gm_ui_button_secondary);
 button3.text_content = "Button 3";
 list1.add_childs([button1, button2, button3])
 
+button2.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
+	show_message("You clicked the second button!");
+});
+
+button3.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
+	show_message("You clicked the third button!");
+});
+
 list2 = instance_create_depth(250, 50, depth, obj_gm_ui_vertical_list);
 title = instance_create_depth(0, 0, depth, obj_gm_ui_textbox);
 title.text_content = "A HEADING TITLE";
 title.text_font = fnt_title;
-title.bg_alpha = 0;
 title.set_margin(5);
 title.margin_bottom = 20;
 textbox1 = instance_create_depth(0, 0, depth, obj_gm_ui_textbox);
@@ -23,12 +30,22 @@ textbox2.text_content = "This is a vertical list with text-elements. But rows al
 row = instance_create_depth(0, 0, depth, obj_gm_ui_row);
 row.set_margin(5);
 row.set_padding(0);
-textbox_in_row1 = instance_create_depth(0, 0, depth, obj_gm_ui_textbox);
-textbox_in_row1.margin_right = 10;
-textbox_in_row1.text_content = "1st Row Element";
-textbox_in_row2 = instance_create_depth(0, 0, depth, obj_gm_ui_textbox);
-textbox_in_row2.text_content = "2nd Row Element";
-row.add_childs([textbox_in_row1, textbox_in_row2]);
+button_in_row = instance_create_depth(0, 0, depth, obj_gm_ui_button_secondary);
+button_in_row.set_padding(10);
+button_in_row.set_margin(0);
+button_in_row.margin_right = 10;
+button_in_row.text_content = "Click HERE to hide ->";
+textbox_in_row = instance_create_depth(0, 0, depth, obj_gm_ui_textbox);
+textbox_in_row.text_content = "Hide me!";
+textbox_in_row.set_padding(10);
+textbox_in_row.set_margin(0);
+button_in_row.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
+	textbox_in_row.set_visibility(!textbox_in_row.hidden);
+});
+button1.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
+	list2.set_visibility(!list2.hidden);
+});
+row.add_childs([button_in_row, textbox_in_row]);
 textbox3 = instance_create_depth(0, 0, depth, obj_gm_ui_textbox);
 textbox3.set_margin(5);
 textbox3.text_content = "Take a look at the code for this demo over at GitHub to find out more.";

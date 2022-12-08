@@ -111,29 +111,32 @@ function paint() {
 	if(!redraw_in_next_frame) return;
 	
 	surface_set_target(surface);
+		
 		draw_clear_alpha(c_white, 0);
-		//	Draw Background
-		draw_set_colour(bg_color);
-		draw_set_alpha(bg_alpha);
-		draw_rectangle(0, 0, width, height, false);
-		draw_set_alpha(1);
-		//	Draw Background Image
-		draw_sprite_fitted(bg_image, image_index, 0, 0, width, height, image_fit);
+		if(!hidden) {
+			//	Draw Background
+			draw_set_colour(bg_color);
+			draw_set_alpha(bg_alpha);
+			draw_rectangle(0, 0, width, height, false);
+			draw_set_alpha(1);
+			//	Draw Background Image
+			draw_sprite_fitted(bg_image, image_index, 0, 0, width, height, image_fit);
 
-		// Draw Text
-		draw_set_colour(text_color);
-		draw_set_font(text_font);
-		draw_text_aligned_on_box(text_x_offset + padding_left, text_y_offset + padding_top, width, height, text_content, text_halign, text_valign);
-		// Draw outlines
-		draw_set_colour(outline_color);
-		// Left
-		draw_rectangle(0, 0, outline_left_strength - 1, height, false);
-		// Right
-		draw_rectangle(width, 0, width - outline_right_strength-1, height, false);
-		// Top
-		draw_rectangle(0, 0, width, outline_top_strength - 1, false);
-		// Bottom
-		draw_rectangle(0, height, width, height-outline_bottom_strength-1, false);
+			// Draw Text
+			draw_set_colour(text_color);
+			draw_set_font(text_font);
+			draw_text_aligned_on_box(text_x_offset + padding_left, text_y_offset + padding_top, width, height, text_content, text_halign, text_valign);
+			// Draw outlines
+			draw_set_colour(outline_color);
+			// Left
+			draw_rectangle(0, 0, outline_left_strength - 1, height, false);
+			// Right
+			draw_rectangle(width, 0, width - outline_right_strength-1, height, false);
+			// Top
+			draw_rectangle(0, 0, width, outline_top_strength - 1, false);
+			// Bottom
+			draw_rectangle(0, height, width, height-outline_bottom_strength-1, false);
+		}
 	surface_reset_target();
 
 	// Draw all children first
@@ -142,7 +145,6 @@ function paint() {
 			event_perform(ev_draw, ev_gui);
 		}
 	}
-	
 	draw_set_colour(c_white);
 	redraw_in_next_frame = false;
 }
@@ -240,6 +242,10 @@ function mouse_in_element() {
 	return _in_rectangle;
 }
 
+/**
+ * Sets the margin for all sides of this element
+ * @param {real} _amount The margin on all sides of this element
+ */
 function set_margin(_amount) {
 	margin_top = _amount;
 	margin_right = _amount;
@@ -247,9 +253,26 @@ function set_margin(_amount) {
 	margin_left = _amount;
 }
 
+/**
+ * Sets the padding for all sides of this element
+ * @param {real} _amount The padding on all sides of this element
+ */
 function set_padding(_amount) {
 	padding_top = _amount;
 	padding_right = _amount;
 	padding_bottom = _amount;
 	padding_left = _amount;
+}
+
+/**
+ * Sets whether the element is hidden or not. Triggers a redraw in the next frame for self and all children
+ * @param {bool} _visible The visibility of the element
+ */
+function set_visibility(_visible) {
+	hidden = _visible;
+	redraw_in_next_frame = true;
+	for(var _i = 0; _i < array_length(children); _i++) {
+		var _ui_element = array_get(children, _i);
+		_ui_element.set_visibility(_visible);
+	}
 }

@@ -4,6 +4,8 @@ paint();
 var _scaled_offset_x = (width * (x_scale - 1))/2
 var _scaled_offset_y = (height * (y_scale - 1))/2
 
+if(hidden) return;
+
 if(parent == noone) {
 	draw_surface_ext(surface, x - _scaled_offset_x, y - _scaled_offset_y, x_scale, y_scale, rotation, c_white, 1);
 } else {
