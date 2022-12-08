@@ -124,6 +124,16 @@ function paint() {
 		draw_set_colour(text_color);
 		draw_set_font(text_font);
 		draw_text_aligned_on_box(text_x_offset + padding_left, text_y_offset + padding_top, width, height, text_content, text_halign, text_valign);
+		// Draw outlines
+		draw_set_colour(outline_color);
+		// Left
+		draw_rectangle(0, 0, outline_left_strength - 1, height, false);
+		// Right
+		draw_rectangle(width, 0, width - outline_right_strength-1, height, false);
+		// Top
+		draw_rectangle(0, 0, width, outline_top_strength - 1, false);
+		// Bottom
+		draw_rectangle(0, height, width, height-outline_bottom_strength-1, false);
 	surface_reset_target();
 
 	// Draw all children first

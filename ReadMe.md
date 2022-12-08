@@ -131,6 +131,12 @@ This is the template object of this project. This object can be extended by sett
 ##### Misc. Variables:<!-- omit from toc -->
 | Name | Type |Description|
 |---|---|---|
+|outline_color|Color|The color of the outlines|
+|outline_top_strength|real|The width of the top outline|
+|outline_right_strength|real|The width of the right outline|
+|outline_bottom_strength|real|The width of the bottom outline|
+|outline_left_strength|real|The width of the left outline|
+|||
 |brightness|Real|The brightness of the element from -1 to 1|
 |rotation|Real|The rotation of the element. Does not affect layout|
 |hidden|Boolean|Whether the element is visible. Should be combined with 'disabled' to avoid unexpected behavior|
