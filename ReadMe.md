@@ -11,9 +11,15 @@
     - [- obj\_gm\_ui\_button](#--obj_gm_ui_button)
       - [Variables](#variables-1)
       - [Methods](#methods-1)
-    - [- obj\_gm\_ui\_list](#--obj_gm_ui_list)
+    - [- obj\_gm\_ui\_vertical\_list](#--obj_gm_ui_vertical_list)
       - [Variables](#variables-2)
       - [Methods](#methods-2)
+    - [- obj\_gm\_ui\_textbox](#--obj_gm_ui_textbox)
+      - [Variables](#variables-3)
+      - [Methods](#methods-3)
+    - [- obj\_gm\_ui\_row](#--obj_gm_ui_row)
+      - [Variables](#variables-4)
+      - [Methods](#methods-4)
   - [Enums](#enums)
   - [Global Util Functions](#global-util-functions)
 
@@ -71,6 +77,8 @@ This is the template object of this project. This object can be extended by sett
 |add_event_callback(EVENT_TYPE, Function)|void|Adds a function to the event-map, which will get executed when the defined event is triggered|
 |execute_event_callback(EVENT_TYPE)|void|Executes all functions in the event-map for the defined event and gives itself as the first parameter|
 |mouse_in_element()|void| Checks whether the mouse is inside the current element and all of its parents and returns the result|
+|set_padding(amount)|void| Sets the padding for all sides|
+|set_margin(amount)|void| Sets the margin for all sides|
 
 ##### Methods That Should Be Handled As Private<!-- omit from toc -->
 | Name | Return Value |Description|
@@ -161,7 +169,7 @@ This is the template object of this project. This object can be extended by sett
 |surface|Real|The ID of this elements surface|
 
 ### - obj_gm_ui_button
-Extends obj_gm_ui_element and adds functionality to add like a button.
+Extends obj_gm_ui_element and adds functionality to act like a button.
 #### Variables
 ##### Variables Added:<!-- omit from toc -->
 
@@ -174,8 +182,24 @@ Extends obj_gm_ui_element and adds functionality to add like a button.
 #### Methods
 No additional methods were added
 
-### - obj_gm_ui_list
+### - obj_gm_ui_vertical_list
 Extends obj_gm_ui_element and sets variables to act like a vertical list.
+
+#### Variables
+No additional variables were added
+#### Methods
+No additional methods were added
+
+### - obj_gm_ui_textbox
+Extends obj_gm_ui_element and sets variables to act like a textbox.
+
+#### Variables
+No additional variables were added
+#### Methods
+No additional methods were added
+
+### - obj_gm_ui_row
+Extends obj_gm_ui_element and sets variables to act like a row element.
 
 #### Variables
 No additional variables were added

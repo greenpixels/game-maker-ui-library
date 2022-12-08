@@ -1,5 +1,5 @@
 global.color_theme = {
-	background_color: #f1f1f1,
+	background_color: #ffffff,
 	button_primary : {
 		standard: #000000,
 		hover : #cccccc,
@@ -14,6 +14,12 @@ global.color_theme = {
 		text_color : {
 			standard: #000000,	
 			hover : #ffffff
+		}
+	},
+	textbox : {
+		standard: #ffffff,
+		text_color : {
+			standard: #000000,
 		}
 	},
 	

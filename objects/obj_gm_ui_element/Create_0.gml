@@ -239,3 +239,17 @@ function mouse_in_element() {
 	}
 	return _in_rectangle;
 }
+
+function set_margin(_amount) {
+	margin_top = _amount;
+	margin_right = _amount;
+	margin_bottom = _amount;
+	margin_left = _amount;
+}
+
+function set_padding(_amount) {
+	padding_top = _amount;
+	padding_right = _amount;
+	padding_bottom = _amount;
+	padding_left = _amount;
+}
