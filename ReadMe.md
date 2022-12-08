@@ -8,18 +8,21 @@
     - [- obj\_gm\_ui\_element](#--obj_gm_ui_element)
       - [Methods](#methods)
       - [Variables](#variables)
-    - [- obj\_gm\_ui\_button](#--obj_gm_ui_button)
+    - [- obj\_gm\_ui\_button\_primary](#--obj_gm_ui_button_primary)
       - [Variables](#variables-1)
       - [Methods](#methods-1)
-    - [- obj\_gm\_ui\_vertical\_list](#--obj_gm_ui_vertical_list)
+    - [- obj\_gm\_ui\_button\_secondary](#--obj_gm_ui_button_secondary)
       - [Variables](#variables-2)
       - [Methods](#methods-2)
-    - [- obj\_gm\_ui\_textbox](#--obj_gm_ui_textbox)
+    - [- obj\_gm\_ui\_vertical\_list](#--obj_gm_ui_vertical_list)
       - [Variables](#variables-3)
       - [Methods](#methods-3)
-    - [- obj\_gm\_ui\_row](#--obj_gm_ui_row)
+    - [- obj\_gm\_ui\_textbox](#--obj_gm_ui_textbox)
       - [Variables](#variables-4)
       - [Methods](#methods-4)
+    - [- obj\_gm\_ui\_row](#--obj_gm_ui_row)
+      - [Variables](#variables-5)
+      - [Methods](#methods-5)
   - [Enums](#enums)
   - [Global Util Functions](#global-util-functions)
 
@@ -34,9 +37,9 @@ In your Game Maker 2 Project, open the 'TOOLS'-context-menu on the top and impor
 In this code example we create a simple button and change its left and right padding:
 ```gml
 // This will create a button instance on the specified coordinates
-button = instance_create_depth(20, 20, depth, obj_gm_ui_button);
-button.padding_top = 10;
-button.padding_right = 10;
+button = instance_create_depth(50, 50, depth, obj_gm_ui_button);
+button.padding_left = 15;
+button.padding_right = 15;
 // While under the hood these padding-changes are applied, we need to update this element in order for layouting to take effect
 // (This applies for every change that affects layouting)
 button.update();
@@ -44,21 +47,21 @@ button.update();
 
 ![Code Example 1](./tutorial-images/button.png)
 
-In this code-example we create a vertical list and add two buttons:
+In this code-example we create a vertical list and add three buttons:
 ```gml
-list = instance_create_depth(20, 20, depth, obj_gm_ui_list);
-button1 = instance_create_depth(0, 0, depth, obj_gm_ui_button); // x and y don't matter since we will add these elements as childs
-button2 = instance_create_depth(0, 0, depth, obj_gm_ui_button); // and the parent will re-position them anyways
+list1 = instance_create_depth(50, 50, depth, obj_gm_ui_vertical_list);
+button1 = instance_create_depth(0, 0, depth, obj_gm_ui_button_primary ); // x and y don't matter here since we will add these elements as childs and the parent will re-position them anyways
+button1.text_content = "Button 1";
 button1.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
-  // This will get executed when the mouse leaves this element
+  // This will get executed when the left mouse button is released on this element
 	show_message("You have clicked this button!");
 });
-button2.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
-  // See the documentation for all type of events
-	show_message("You have the other button!");
-});
+button2 = instance_create_depth(0, 0, depth, obj_gm_ui_button_secondary);
+button2.text_content = "Button 2";
+button3 = instance_create_depth(0, 0, depth, obj_gm_ui_button_secondary);
+button3.text_content = "Button 3";
 // Under the hood 'add_childs' already updates all components involved in this, so we don't need to trigger an update ourselves
-list.add_childs([button1, button2]);
+list1.add_childs([button1, button2, button3])
 ```
 ![Code Example 2](./tutorial-images/list.png)
 
@@ -168,17 +171,17 @@ This is the template object of this project. This object can be extended by sett
 |text_height|Real|The calculated height of this elements text|
 |surface|Real|The ID of this elements surface|
 
-### - obj_gm_ui_button
+### - obj_gm_ui_button_primary
 Extends obj_gm_ui_element and adds functionality to act like a button.
 #### Variables
-##### Variables Added:<!-- omit from toc -->
+No additional variables were added
+#### Methods
+No additional methods were added
 
-| Name | Type |Description|
-|---|---|---|
-|image_pressed|Asset<Sprite>|The sprite used to set the background image when pressing the button|
-|image_hovered|Asset<Sprite>|The sprite used to set the background image when hovering the button|
-|image_default|Asset<Sprite>|The sprite used to set the background when no other state is applicable|
-
+### - obj_gm_ui_button_secondary
+Extends obj_gm_ui_element and adds functionality to act like a button.
+#### Variables
+No additional variables were added
 #### Methods
 No additional methods were added
 
