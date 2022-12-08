@@ -82,7 +82,8 @@ This is the template object of this project. This object can be extended by sett
 |mouse_in_element()|void| Checks whether the mouse is inside the current element and all of its parents and returns the result|
 |set_padding(amount)|void| Sets the padding for all sides|
 |set_margin(amount)|void| Sets the margin for all sides|
-|set_visibility(boolean)|void| Sets whether the element is hidden or not. Triggers a redraw for self and all children|
+|set_visibility(boolean)|void| Sets whether the element and all its children are hidden or not. Triggers a redraw for self and all children|
+|set_disabled(boolean)|void| Sets whether the element and all its children are disabled or not. Triggers a redraw for self and all children|
 
 ##### Methods That Should Be Handled As Private<!-- omit from toc -->
 | Name | Return Value |Description|
@@ -151,7 +152,6 @@ This is the template object of this project. This object can be extended by sett
 |||
 |brightness|Real|The brightness of the element from -1 to 1|
 |rotation|Real|The rotation of the element. Does not affect layout|
-|disabled|Boolean|Prevents interaction with this element|
 |x_scale|Real|The horizontal scale of the element. Does not affect layout and does not change the width variable|
 |y_scale|Real|The vertical scale of the element. Does not affect layout and does not change the height variable|
 |event_callback|Map<UI_EVENT, Function>|The map with functions executed when specific events are triggered|
@@ -159,6 +159,8 @@ This is the template object of this project. This object can be extended by sett
 ##### Variables That Should Mostly Be Handled As Read-Only<!-- omit from toc -->
 | Name | Type |Description|
 |---|---|---|
+
+|disabled|Boolean|Whether interaction with this element is prevented|
 |hidden|Boolean|Whether the element is visible|
 |redraw_in_next_frame|bool|Triggers a redraw to the surface in the next frame when true|
 |hovered|bool|Whether the mouse cursor is inside all parent elements and the element itself|
