@@ -18,7 +18,8 @@
 # About 
 GM UI LIBRARY is a package for Game Maker 2.x including objects that can be used to easily create a dynamic interface. Game Maker 2.x currently does not have the ability to easily create an user interface. GM UI LIBRARY tries to make that process easier. Anyone and everyone is invited to contribute to this project.
 # How To Install
-Go to Released and download the package (.)
+Go to [Releases](https://github.com/greenpixels/game-maker-ui-library/releases) and download the latest package.
+In your Game Maker 2 Project, open the 'TOOLS'-context-menu on the top and import this package into your project.
 # Documentation
 ## Objects
 ### - obj_gm_ui_element
