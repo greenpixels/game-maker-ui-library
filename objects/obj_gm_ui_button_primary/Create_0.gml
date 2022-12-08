@@ -21,3 +21,11 @@ add_event_callback(UI_EVENT.ON_MOUSE_PRESSED, function() {
 add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
 	brightness = 0;	
 })
+
+add_event_callback(UI_EVENT.ON_DISABLE, function() {
+	brightness = -0.2;
+})
+
+add_event_callback(UI_EVENT.ON_ENABLE, function() {
+	brightness = 0;	
+})
