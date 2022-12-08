@@ -276,3 +276,21 @@ function set_visibility(_visible) {
 		_ui_element.set_visibility(_visible);
 	}
 }
+
+/**
+ * Sets whether the element and all its children are disabled or not. Triggers a redraw in the next frame for self and all children
+ * @param {bool} _disabled Wheter the element is disabled
+ */
+function set_disabled(_disabled) {
+	disabled = _disabled;
+	if(disabled) {
+		execute_event_callbacks(UI_EVENT.ON_DISABLE);	
+	} else {
+		execute_event_callbacks(UI_EVENT.ON_ENABLE);	
+	}
+	redraw_in_next_frame = true;
+	for(var _i = 0; _i < array_length(children); _i++) {
+		var _ui_element = array_get(children, _i);
+		_ui_element.set_disabled(_disabled);
+	}
+}

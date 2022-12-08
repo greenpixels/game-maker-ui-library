@@ -7,6 +7,8 @@ if(parent != noone) {
 }
 
 if(mouse_in_element()) {
+	if(disabled) return;
+	
 	if(!hovered) {
 		hovered = true;
 		execute_event_callbacks(UI_EVENT.ON_MOUSE_ENTER);
