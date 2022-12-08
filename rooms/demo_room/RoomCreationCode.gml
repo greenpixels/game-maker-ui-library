@@ -55,7 +55,6 @@ button4.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
 	url_open_ext("https://github.com/greenpixels/game-maker-ui-library", "_blank");
 });
 button4.set_margin(5);
-button4.margin_top = 20;
 list2.add_childs([title, textbox1, textbox2, row, textbox3, button4]);
 
 
