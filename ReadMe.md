@@ -3,6 +3,7 @@
 - [About](#about)
 - [How To Install](#how-to-install)
 - [Documentation](#documentation)
+  - [Code Examples](#code-examples)
   - [Objects](#objects)
     - [- obj\_gm\_ui\_element](#--obj_gm_ui_element)
       - [Methods](#methods)
@@ -17,12 +18,45 @@
   - [Global Util Functions](#global-util-functions)
 # About 
 GM UI LIBRARY is a package for Game Maker 2.x including objects that can be used to easily create a dynamic interface. Game Maker 2.x currently does not have the ability to easily create an user interface. GM UI LIBRARY tries to make that process easier. Anyone and everyone is invited to contribute to this project.
-
-[You can find a web-demo showcasing the basic functionality of this project on itch.io](https://greenpixels.itch.io/game-maker-ui-library)
 # How To Install
 Go to [Releases](https://github.com/greenpixels/game-maker-ui-library/releases) and download the latest package.
 In your Game Maker 2 Project, open the 'TOOLS'-context-menu on the top and import this package into your project.
 # Documentation
+## Code Examples
+
+In this code example we create a simple button and change its left and right padding:
+```gml
+// This will create a button instance on the specified coordinates
+button = instance_create_depth(20, 20, depth, obj_gm_ui_button);
+button.padding_top = 10;
+button.padding_right = 10;
+// While under the hood these padding-changes are applied, we need to update this element in order for layouting to take effect
+// (This applies for every change that affects layouting)
+button.update();
+```
+
+![Code Example 1](./tutorial-images/button.png)
+
+In this code-example we create a vertical list and add two buttons:
+```gml
+list = instance_create_depth(20, 20, depth, obj_gm_ui_list);
+button1 = instance_create_depth(0, 0, depth, obj_gm_ui_button); // x and y don't matter since we will add these elements as childs
+button2 = instance_create_depth(0, 0, depth, obj_gm_ui_button); // and the parent will re-position them anyways
+button1.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
+  // This will get executed when the mouse leaves this element
+	show_message("You have clicked this button!");
+});
+button2.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
+  // See the documentation for all type of events
+	show_message("You have the other button!");
+});
+// Under the hood 'add_childs' already updates all components involved in this, so we don't need to trigger an update ourselves
+list.add_childs([button1, button2]);
+```
+![Code Example 2](./tutorial-images/list.png)
+
+
+[You can find a web-demo showcasing the basic functionality of this project on itch.io](https://greenpixels.itch.io/game-maker-ui-library)
 ## Objects
 ### - obj_gm_ui_element
 This is the template object of this project. This object can be extended by setting it as a parent to easily create your own custom UI elements.
