@@ -35,7 +35,7 @@ textbox3.text_content = "Take a look at the code for this demo over at GitHub to
 button4 = instance_create_depth(0, 0, depth, obj_gm_ui_button_primary);
 button4.text_content = "Okay! (Opens GitHub.com)";
 button4.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
-	url_open("https://github.com/greenpixels/game-maker-ui-library");
+	url_open_ext("https://github.com/greenpixels/game-maker-ui-library", "_blank");
 });
 button4.set_margin(5);
 button4.margin_top = 20;
