@@ -17,6 +17,8 @@
   - [Global Util Functions](#global-util-functions)
 # About 
 GM UI LIBRARY is a package for Game Maker 2.x including objects that can be used to easily create a dynamic interface. Game Maker 2.x currently does not have the ability to easily create an user interface. GM UI LIBRARY tries to make that process easier. Anyone and everyone is invited to contribute to this project.
+
+[You can find a web-demo showcasing the basic functionality of this project on itch.io](https://greenpixels.itch.io/game-maker-ui-library)
 # How To Install
 Go to [Releases](https://github.com/greenpixels/game-maker-ui-library/releases) and download the latest package.
 In your Game Maker 2 Project, open the 'TOOLS'-context-menu on the top and import this package into your project.
