@@ -13,7 +13,7 @@ title.text_content = "A HEADING TITLE";
 title.text_font = fnt_title;
 title.bg_alpha = 0;
 title.set_margin(5);
-title.margin_bottom(20);
+title.margin_bottom = 20;
 textbox1 = instance_create_depth(0, 0, depth, obj_gm_ui_textbox);
 textbox1.text_content = "It is pretty easy to create a good-looking UI with game-maker-ui-library!";
 textbox1.set_margin(5);
@@ -38,7 +38,7 @@ button4.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
 	url_open("https://github.com/greenpixels/game-maker-ui-library");
 });
 button4.set_margin(5);
-button4.margin_top = 10;
+button4.margin_top = 20;
 list2.add_childs([title, textbox1, textbox2, row, textbox3, button4]);
 
 
