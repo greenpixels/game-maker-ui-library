@@ -59,8 +59,8 @@ function break_text(_text, _max_width) {
                 _pos_space = -1;
             }
         }
+		if (string_char_at(_text_current, _pos_current) == " ") _pos_space = _pos_current;
         _pos_current += 1;
-        if (string_char_at(_text_current, _pos_current) == " ") _pos_space = _pos_current;
     }
     if (string_length(_text_current) > 0) _text_output += _text_current;
     return _text_output;
