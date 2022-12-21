@@ -179,6 +179,7 @@ function justify_children(_rows) {
 			break;
 		}
 	}
+	ds_list_destroy(_rows);
 }
 
 /**
