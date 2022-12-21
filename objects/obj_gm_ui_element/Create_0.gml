@@ -87,11 +87,17 @@ function layout_children() {
 	}
 	height += _current_row_heighest;
 	
-	if(justify_content != JUSTIFY_CONTENT.START) {
+	if(justify_content != UI_JUSTIFY_CONTENT.START) {
 		justify_children(_rows);
 	}
 }
 
+
+/**
+ * Justifies or resizes all children according to the chosen justification method
+ * @param {id.dslist} _rows A list of lists containing each child element in a row
+ * @ignore
+ */
 function justify_children(_rows) {
 	for(var _i = 0; _i < ds_list_size(_rows); _i++) {
 		var _children_in_row = ds_list_find_value(_rows, _i);
@@ -106,7 +112,7 @@ function justify_children(_rows) {
 		if(_empty_space <= 0) continue;
 		// Excecute the justification of space using the emtpy space
 		switch(justify_content) {
-			case JUSTIFY_CONTENT.CENTER:
+			case UI_JUSTIFY_CONTENT.CENTER:
 				var _x = padding_left + _empty_space/2;
 				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
 					var _child = ds_list_find_value(_children_in_row, _j);
@@ -115,7 +121,7 @@ function justify_children(_rows) {
 				}
 			break;
 			
-			case JUSTIFY_CONTENT.SPACE_BETWEEN:
+			case UI_JUSTIFY_CONTENT.SPACE_BETWEEN:
 				if(ds_list_size(_children_in_row) <= 1) continue;
 				var _x = padding_left;
 				var _spacing = _empty_space / (ds_list_size(_children_in_row) - 1);
@@ -126,7 +132,7 @@ function justify_children(_rows) {
 				}
 			break;
 			
-			case JUSTIFY_CONTENT.SPACE_EVENLY:
+			case UI_JUSTIFY_CONTENT.SPACE_EVENLY:
 				if(ds_list_size(_children_in_row) <= 1) continue;
 				var _spacing = _empty_space / (ds_list_size(_children_in_row) + 1);
 				var _x = padding_left + _spacing;
@@ -137,7 +143,7 @@ function justify_children(_rows) {
 				}
 			break;
 			
-			case JUSTIFY_CONTENT.FILL_WIDTH:			
+			case UI_JUSTIFY_CONTENT.FILL_WIDTH:			
 				// Distribute the empty space among all children
 				while(_empty_space > 0) {
 						var _max_width_reached = true;
@@ -173,7 +179,6 @@ function justify_children(_rows) {
 			break;
 		}
 	}
-	
 }
 
 /**
@@ -276,7 +281,7 @@ function update() {
 	
 	var _minimal_width = max(padding_left + padding_right, min_width);
 	if(parent != noone) {
-		if(parent.justify_content == JUSTIFY_CONTENT.FILL_WIDTH) {
+		if(parent.justify_content == UI_JUSTIFY_CONTENT.FILL_WIDTH) {
 			width = max(_minimal_width, width);
 		} else {
 			width = _minimal_width;	

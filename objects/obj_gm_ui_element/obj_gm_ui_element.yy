@@ -99,11 +99,11 @@
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"outline_right_strength","varType":0,"value":"0","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"outline_left_strength","varType":0,"value":"0","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"outline_color","varType":7,"value":"$00FFFFFF","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"justify_content","varType":6,"value":"JUSTIFY_CONTENT.START","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[
-        "JUSTIFY_CONTENT.START",
-        "JUSTIFY_CONTENT.CENTER",
-        "JUSTIFY_CONTENT.SPACE_BETWEEN",
-        "JUSTIFY_CONTENT.SPACE_EVENLY",
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"justify_content","varType":6,"value":"UI_JUSTIFY_CONTENT.START","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[
+        "UI_JUSTIFY_CONTENT.START",
+        "UI_JUSTIFY_CONTENT.CENTER",
+        "UI_JUSTIFY_CONTENT.SPACE_BETWEEN",
+        "UI_JUSTIFY_CONTENT.SPACE_EVENLY",
       ],"multiselect":false,"filters":[],},
   ],
   "overriddenProperties": [],
