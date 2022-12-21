@@ -273,7 +273,20 @@ function paint() {
  * Layouts the children and text, updates the dimension and triggers a redraw.
  */
 function update() {
-	width = max(padding_left + padding_right, min_width, width);
+	
+	var _minimal_width = max(padding_left + padding_right, min_width);
+	if(parent != noone) {
+		if(parent.justify_content == JUSTIFY_CONTENT.FILL_WIDTH) {
+			width = max(_minimal_width, width);
+		} else {
+			width = _minimal_width;	
+		}
+	} else {
+		width = _minimal_width;	
+	}
+	
+
+
 	height = max(padding_top + padding_bottom, min_height);
 	layout_children();
 	layout_text();	
