@@ -39,6 +39,8 @@ function layout_children() {
 	var _y = padding_top;
 	var _current_row_heighest = 0;
 	var _current_row_width = 0;
+	var _current_row = 0;
+	var _rows = ds_list_create();
 	
 	for(var _i = 0; _i < ds_list_size(children); _i++) {
 		var _child = ds_list_find_value(children, _i);
@@ -53,6 +55,7 @@ function layout_children() {
 			height += _current_row_heighest;
 			_current_row_heighest = 0;
 			_current_row_width = _child_w;
+			_current_row++;
 		} else {
 			// Layout children horizontally
 			_current_row_width += _child_w;
@@ -70,8 +73,107 @@ function layout_children() {
 		if(_current_row_width > width) {
 			width = _current_row_width + padding_left + padding_right;
 		}
+		
+		var _children_in_current_row = ds_list_find_value(_rows, _current_row);
+		if(is_undefined(_children_in_current_row)) {
+			_children_in_current_row = ds_list_create();
+			ds_list_add(_children_in_current_row, _child);
+			ds_list_add(_rows, _children_in_current_row);
+		} else {
+			ds_list_add(_children_in_current_row, _child);
+			ds_list_replace(_rows, _current_row, _children_in_current_row);
+		}
+		
 	}
 	height += _current_row_heighest;
+	
+	if(justify_content != JUSTIFY_CONTENT.START) {
+		justify_children(_rows);
+	}
+}
+
+function justify_children(_rows) {
+	for(var _i = 0; _i < ds_list_size(_rows); _i++) {
+		var _children_in_row = ds_list_find_value(_rows, _i);
+		var _width_sum = 0;
+		// Get width of all children in the current row
+		for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
+			var _child = ds_list_find_value(_children_in_row, _j);
+			_width_sum +=  _child.margin_left + _child.width + _child.margin_right;
+		}
+		
+		var _empty_space = width - padding_left - padding_right - _width_sum;
+		if(_empty_space <= 0) continue;
+		// Excecute the justification of space using the emtpy space
+		switch(justify_content) {
+			case JUSTIFY_CONTENT.CENTER:
+				var _x = padding_left + _empty_space/2;
+				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
+					var _child = ds_list_find_value(_children_in_row, _j);
+					_child.x = _x;
+					_x += _child.margin_left + _child.width + _child.margin_right;
+				}
+			break;
+			
+			case JUSTIFY_CONTENT.SPACE_BETWEEN:
+				if(ds_list_size(_children_in_row) <= 1) continue;
+				var _x = padding_left;
+				var _spacing = _empty_space / (ds_list_size(_children_in_row) - 1);
+				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
+					var _child = ds_list_find_value(_children_in_row, _j);
+					_child.x = _x;
+					_x += _child.margin_left + _child.width + _child.margin_right + _spacing;
+				}
+			break;
+			
+			case JUSTIFY_CONTENT.SPACE_EVENLY:
+				if(ds_list_size(_children_in_row) <= 1) continue;
+				var _spacing = _empty_space / (ds_list_size(_children_in_row) + 1);
+				var _x = padding_left + _spacing;
+				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
+					var _child = ds_list_find_value(_children_in_row, _j);
+					_child.x = _x;
+					_x += _child.margin_left + _child.width + _child.margin_right + _spacing;
+				}
+			break;
+			
+			case JUSTIFY_CONTENT.FILL_WIDTH:			
+				// Distribute the empty space among all children
+				while(_empty_space > 0) {
+						var _max_width_reached = true;
+						for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
+						if(_empty_space <= 0) continue;
+						var _child = ds_list_find_value(_children_in_row, _j);
+						if(_child.max_width != undefined) {
+							if(_child.width < _child.max_width) {
+								_child.width++;
+								_max_width_reached = false;
+								_empty_space--;
+							}
+						} else {
+							_child.width++;
+							_max_width_reached = false;
+							_empty_space--;
+						}
+						
+					}
+					// If no child can be widened, then just break the loop
+					if(_max_width_reached) {
+						break;
+					}
+				}
+				// Place all widened children next to each other
+				var _x = padding_left;
+				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
+					var _child = ds_list_find_value(_children_in_row, _j);
+					_child.x = _x;
+					_child.update();
+					_x += _child.margin_left + _child.width + _child.margin_right;
+				}
+			break;
+		}
+	}
+	
 }
 
 /**
@@ -171,7 +273,7 @@ function paint() {
  * Layouts the children and text, updates the dimension and triggers a redraw.
  */
 function update() {
-	width = max(padding_left + padding_right, min_width);
+	width = max(padding_left + padding_right, min_width, width);
 	height = max(padding_top + padding_bottom, min_height);
 	layout_children();
 	layout_text();	
