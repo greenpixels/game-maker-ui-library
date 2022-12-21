@@ -1,6 +1,8 @@
 list1 = instance_create_depth(50, 50, depth, obj_gm_ui_vertical_list);
+list1.min_width = 170;
+list1.justify_content = JUSTIFY_CONTENT.FILL_WIDTH;
 button1 = instance_create_depth(0, 0, depth, obj_gm_ui_button_primary );
-button1.text_content = "Hide   ->";
+button1.text_content = "Hide";
 button2 = instance_create_depth(0, 0, depth, obj_gm_ui_button_secondary);
 button2.text_content = "Button 2";
 button3 = instance_create_depth(0, 0, depth, obj_gm_ui_button_secondary);
@@ -16,6 +18,8 @@ button3.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
 });
 
 list2 = instance_create_depth(250, 50, depth, obj_gm_ui_vertical_list);
+list2.min_width = 1000;
+list2.justify_content = JUSTIFY_CONTENT.FILL_WIDTH;
 title = instance_create_depth(0, 0, depth, obj_gm_ui_textbox);
 title.text_content = "A HEADING TITLE";
 title.text_font = fnt_title;
@@ -28,6 +32,7 @@ textbox2 = instance_create_depth(0, 0, depth, obj_gm_ui_textbox);
 textbox2.set_margin(5);
 textbox2.text_content = "This is a vertical list with text-elements. But rows also exist:";
 row = instance_create_depth(0, 0, depth, obj_gm_ui_row);
+row.justify_content = JUSTIFY_CONTENT.FILL_WIDTH;
 row.set_margin(5);
 row.set_padding(0);
 button_in_row = instance_create_depth(0, 0, depth, obj_gm_ui_button_primary);
