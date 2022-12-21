@@ -94,6 +94,7 @@ This is the template object of this project. This object can be extended by sett
 |layout_text()|void|Layouts the text according to the set text variables in the element|
 |paint()|void|Paints self and all children|
 |update()|void|Layouts the children and text, updates the dimension and triggers a redraw.|
+|justify_children(_rows)|void|Justifies or resizes all children according to the chosen justification method.|
 
 #### Variables
 ##### Variables For Text Manipulation:<!-- omit from toc -->
@@ -131,6 +132,7 @@ This is the template object of this project. This object can be extended by sett
 |padding_left|Real|The left padding|
 |||
 |flex_direction|UI_FLEX_DIRECTION|The direction of the placement of elements|
+|justify_content|UI_JUSTIFY_CONTENT|The method on how to justify the children of an element. See the corresponding enum for more detail|
 
 ##### Variables For Image Manipulation:<!-- omit from toc -->
 | Name | Type |Description|
@@ -234,6 +236,13 @@ Enums used in this project
 |---|
 |.EXTEND|
 |.HIDE|
+
+|UI_JUSTIFY_CONTENT||
+|---|---|
+|.START|Default - Places all elements one after another with their margin as spacing|
+|.SPACE_BETWEEN|Places the elements at the start and end and then divides the space between among all children|
+|.SPACE_EVENLY|Evenly divides the empty space as spacing among all the children|
+|.FILL_WIDTH|Increases the width of all children until the width is competly filled|
 
 ## Global Util Functions
 | Name | Return Value |Description|
