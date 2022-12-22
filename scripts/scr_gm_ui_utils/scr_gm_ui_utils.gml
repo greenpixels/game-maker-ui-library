@@ -11,13 +11,20 @@
 function draw_text_aligned_on_box(_x, _y, _width, _height, _text, _halign, _valign) {
 	draw_set_halign(_halign);
 	draw_set_valign(_valign);
+	
+	switch(_valign) {
+		case fa_top: _y += 0; break;
+		case fa_middle : _y += height/2; break;
+		case fa_bottom : _y += height; break;
+	}
+	
 	switch(_halign) {
 		case fa_left:
 			draw_text_transformed(_x, _y, _text, 1, 1, 0);
 			break;
 			
 		case fa_center:
-			draw_text_transformed(_width/2, _height/2, _text, 1, 1, 0);
+			draw_text_transformed(_width/2, _y, _text, 1, 1, 0);
 			break;
 			
 		case fa_right:
