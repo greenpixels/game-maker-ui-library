@@ -186,11 +186,9 @@ function justify_rows(_rows) {
 				// Place all widened children next to each other
 				var _x = padding_left;
 				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
-					show_debug_message("TEST " + string(_i) + " " + string(_j))
 					var _child = ds_list_find_value(_children_in_row, _j);
 					_child.x = _x;
 					_child.update();
-					show_debug_message(_child.x)
 					_x += _child.margin_left + _child.width + _child.margin_right;
 				}
 				
