@@ -1,38 +1,3 @@
-/** 
-* Automatically offsets the text to the correct position with the given horizontal alignment
-* @param {real} _x x of the box
-* @param {real} _y y of the box
-* @param {real} _width width of the box
-* @param {real} _height height of the box
-* @param {string} _text text string
-* @param {constant.halign} _halign horizontal alignment of the text
-* @param {constant.valign} _valign vertical alignment of the text
-*/
-function draw_text_aligned_on_box(_x, _y, _width, _height, _text, _halign, _valign) {
-	draw_set_halign(_halign);
-	draw_set_valign(_valign);
-	
-	switch(_valign) {
-		case fa_top: _y += 0; break;
-		case fa_middle : _y += height/2; break;
-		case fa_bottom : _y += height; break;
-	}
-	
-	switch(_halign) {
-		case fa_left:
-			draw_text_transformed(_x, _y, _text, 1, 1, 0);
-			break;
-			
-		case fa_center:
-			draw_text_transformed(_width/2, _y, _text, 1, 1, 0);
-			break;
-			
-		case fa_right:
-			draw_text_transformed(_x + _width, _y, _text, 1, 1, 0);
-			break;
-	}
-}
-
 /**
  * Breaks the given text when exceeding the maximum width
  * Taken from: https://www.gmlscripts.com/script/string_wordwrap_width

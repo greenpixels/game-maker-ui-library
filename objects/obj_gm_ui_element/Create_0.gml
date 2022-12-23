@@ -212,6 +212,36 @@ function layout_text() {
 	}
 }
 
+/** 
+* Automatically offsets the text to the correct position with the given horizontal alignment
+*/
+function draw_text_aligned_on_box(_text) {
+	var _y = 0;
+	var _x = 0;
+	draw_set_halign(text_halign);
+	draw_set_valign(text_valign);
+	
+	switch(text_valign) {
+		case fa_top: _y += 0 + padding_top; break;
+		case fa_middle : _y += height/2; break;
+		case fa_bottom : _y += height - padding_bottom; break;
+	}
+	
+	switch(text_halign) {
+		case fa_left:
+			draw_text_transformed(_x + padding_left, _y, _text, 1, 1, 0);
+			break;
+			
+		case fa_center:
+			draw_text_transformed(width/2, _y, _text, 1, 1, 0);
+			break;
+			
+		case fa_right:
+			draw_text_transformed(_x + width - padding_right, _y, _text, 1, 1, 0);
+			break;
+	}
+}
+
 /**
  * Paints self and all children
  */
@@ -233,7 +263,7 @@ function paint() {
 			// Draw Text
 			draw_set_colour(text_color);
 			draw_set_font(text_font);
-			draw_text_aligned_on_box(text_x_offset + padding_left, text_y_offset + padding_top, width, height, text_content, text_halign, text_valign);
+			draw_text_aligned_on_box(text_content);
 			// Draw outlines
 			draw_set_colour(outline_color);
 			
