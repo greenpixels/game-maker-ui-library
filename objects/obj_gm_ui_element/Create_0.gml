@@ -122,7 +122,7 @@ function justify_rows(_rows) {
 				var _x = padding_left;
 				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
 					var _child = ds_list_find_value(_children_in_row, _j);
-					_child.x = _x;
+					_child.x = _x + _child.margin_left;
 					_x += _child.margin_left + _child.width + _child.margin_right;
 				}
 			break;
@@ -131,7 +131,7 @@ function justify_rows(_rows) {
 				var _x = padding_left + _empty_space/2;
 				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
 					var _child = ds_list_find_value(_children_in_row, _j);
-					_child.x = _x;
+					_child.x = _x + _child.margin_left;
 					_x += _child.margin_left + _child.width + _child.margin_right;
 				}
 			break;
@@ -142,7 +142,7 @@ function justify_rows(_rows) {
 				var _spacing = _empty_space / (ds_list_size(_children_in_row) - 1);
 				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
 					var _child = ds_list_find_value(_children_in_row, _j);
-					_child.x = _x;
+					_child.x = _x + _child.margin_left;
 					_x += _child.margin_left + _child.width + _child.margin_right + _spacing;
 				}
 			break;
@@ -153,7 +153,7 @@ function justify_rows(_rows) {
 				var _x = padding_left + _spacing;
 				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
 					var _child = ds_list_find_value(_children_in_row, _j);
-					_child.x = _x;
+					_child.x = _x + _child.margin_left;
 					_x += _child.margin_left + _child.width + _child.margin_right + _spacing;
 				}
 			break;
@@ -187,7 +187,7 @@ function justify_rows(_rows) {
 				var _x = padding_left;
 				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
 					var _child = ds_list_find_value(_children_in_row, _j);
-					_child.x = _x;
+					_child.x = _x + _child.margin_left;
 					_child.update();
 					_x += _child.margin_left + _child.width + _child.margin_right;
 				}
