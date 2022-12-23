@@ -71,6 +71,14 @@ button5.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
 	room_goto(demo_room2);
 });
 button5.set_margin(5);
-list2.add_childs([title, textbox1, textbox2, row, textbox3, button4, textbox4, button5]);
+
+button6 = instance_create_depth(0, 0, depth, obj_gm_ui_button_primary);
+button6.text_content = "See Demo for 'Text Alignment'";
+button6.add_event_callback(UI_EVENT.ON_MOUSE_RELEASED, function() {
+	room_goto(demo_room3);
+});
+button6.set_margin(5);
+
+list2.add_childs([title, textbox1, textbox2, row, textbox3, button4, textbox4, button5, button6]);
 
 
