@@ -23,33 +23,7 @@ text_box.outline_left_strength = 1;
 text_box.outline_bottom_strength = 1;
 text_box.set_margin(15);
 text_box.set_padding(10);
-
-text_box2 = instance_create_depth(x, y, depth, obj_gm_ui_textbox);
-text_box2.text_content = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam";
-text_box2.outline_top_strength = 1;
-text_box2.outline_right_strength = 1;
-text_box2.outline_left_strength = 1;
-text_box2.outline_bottom_strength = 1;
-text_box2.set_margin(15);
-text_box2.set_padding(10);
-
-text_box3 = instance_create_depth(x, y, depth, obj_gm_ui_textbox);
-text_box3.text_content = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam";
-text_box3.outline_top_strength = 1;
-text_box3.outline_right_strength = 1;
-text_box3.outline_left_strength = 1;
-text_box3.outline_bottom_strength = 1;
-text_box3.set_margin(15);
-text_box3.set_padding(10);
-
-text_box4 = instance_create_depth(x, y, depth, obj_gm_ui_textbox);
-text_box4.text_content = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam";
-text_box4.outline_top_strength = 1;
-text_box4.outline_right_strength = 1;
-text_box4.outline_left_strength = 1;
-text_box4.outline_bottom_strength = 1;
-text_box4.set_margin(15);
-text_box4.set_padding(10);
+text_box.min_height = 160;
 
 row_halign = instance_create_depth(x, y, depth, obj_gm_ui_row);
 row_halign.justify_content = UI_JUSTIFY_CONTENT.FILL_WIDTH;
@@ -101,6 +75,6 @@ row_valign.add_childs([button_top, button_middle, button_bottom]);
 
 
 
-list.add_childs([row_halign, row_valign, text_box, text_box2, text_box3, text_box4]);
+list.add_childs([row_halign, row_valign, text_box]);
 
 
