@@ -31,7 +31,7 @@ function check_max_width_exceeded(_width) {
 }
 
 /**
- * Layouts the children of this element and extends its width and height when necessary
+ * Creates rows with line breaks and then calls 'justify_rows' using the created rows in this function to horizontally position them
  * @ignore
  */
 function layout_children() {
@@ -43,38 +43,37 @@ function layout_children() {
 	var _rows = ds_list_create();
 	
 	for(var _i = 0; _i < ds_list_size(children); _i++) {
+		var _children_in_current_row = ds_list_find_value(_rows, _current_row);
+		
 		var _child = ds_list_find_value(children, _i);
 		_child.update();
 		var _child_w = _child.margin_left + _child.width + _child.margin_right;
 		var _child_h = _child.margin_top + _child.height + _child.margin_bottom;
 	
-		if(check_max_width_exceeded(_child_w) || flex_direction == UI_FLEX_DIRECTION.VERTICAL) {
-			// Layout children vertically
-			_x = padding_left;
-			_y += _current_row_heighest;
-			height += _current_row_heighest;
-			_current_row_heighest = 0;
-			_current_row_width = _child_w;
-			_current_row++;
-		} else {
-			// Layout children horizontally
-			_current_row_width += _child_w;
+		// Check whether adding a child to this element would exceed to maximum width
+		if(check_max_width_exceeded(_child_w)) {
+			// Check wther the child in general is wider than the allowed width
+			if(_child_w < max_width - padding_left - padding_right) {
+				// If not, then break to the next line and repeat the layouting for this child
+				_x = padding_left;
+				_y += _current_row_heighest;
+				height += _current_row_heighest;
+				_current_row_width = 0;
+				_current_row_heighest = 0;
+				_current_row++;
+			}
 		}
-	
-		_child.x = _x + _child.margin_left;
+		
+		_current_row_heighest = max(_current_row_heighest, _child_h);
+		_current_row_width += _child_w;
+		width = max(width, _current_row_width - (padding_left + padding_right));
+		if(max_width) width = clamp(width, width, max_width);
+		
+		//_child.x = _x + _child.margin_left;
 		_child.y = _y + _child.margin_top;
 		_x += _child_w;
 		
-		if(_child_h > _current_row_heighest) {
-			_current_row_heighest = _child_h;	
-		}
-	
-		// Determine the width of this element by the sum of the width of all childrens
-		if(_current_row_width > width) {
-			width = _current_row_width + padding_left + padding_right;
-		}
-		
-		var _children_in_current_row = ds_list_find_value(_rows, _current_row);
+		// Add the child to the current row
 		if(is_undefined(_children_in_current_row)) {
 			_children_in_current_row = ds_list_create();
 			ds_list_add(_children_in_current_row, _child);
@@ -84,21 +83,27 @@ function layout_children() {
 			ds_list_replace(_rows, _current_row, _children_in_current_row);
 		}
 		
+		// When this element has a vertical layout, then go the next line after every element
+		if(flex_direction == UI_FLEX_DIRECTION.VERTICAL) {
+			_x = padding_left;
+			_y += _current_row_heighest;
+			height += _current_row_heighest;
+			_current_row_width = 0;
+			_current_row_heighest = 0;
+			_current_row++;
+		}
 	}
 	height += _current_row_heighest;
-	
-	if(justify_content != UI_JUSTIFY_CONTENT.START) {
-		justify_children(_rows);
-	}
+	justify_rows(_rows);
 }
 
 
 /**
- * Justifies or resizes all children according to the chosen justification method
+ * Justifies or resizes all children horizontally according to the chosen justification method
  * @param {id.dslist} _rows A list of lists containing each child element in a row
  * @ignore
  */
-function justify_children(_rows) {
+function justify_rows(_rows) {
 	for(var _i = 0; _i < ds_list_size(_rows); _i++) {
 		var _children_in_row = ds_list_find_value(_rows, _i);
 		var _width_sum = 0;
@@ -112,6 +117,16 @@ function justify_children(_rows) {
 		if(_empty_space <= 0) continue;
 		// Excecute the justification of space using the emtpy space
 		switch(justify_content) {
+			
+			case UI_JUSTIFY_CONTENT.START: 
+				var _x = padding_left;
+				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
+					var _child = ds_list_find_value(_children_in_row, _j);
+					_child.x = _x;
+					_x += _child.margin_left + _child.width + _child.margin_right;
+				}
+			break;
+			
 			case UI_JUSTIFY_CONTENT.CENTER:
 				var _x = padding_left + _empty_space/2;
 				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
@@ -171,11 +186,14 @@ function justify_children(_rows) {
 				// Place all widened children next to each other
 				var _x = padding_left;
 				for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
+					show_debug_message("TEST " + string(_i) + " " + string(_j))
 					var _child = ds_list_find_value(_children_in_row, _j);
 					_child.x = _x;
 					_child.update();
+					show_debug_message(_child.x)
 					_x += _child.margin_left + _child.width + _child.margin_right;
 				}
+				
 			break;
 		}
 	}
@@ -247,7 +265,6 @@ function draw_text_aligned_on_box(_text) {
  */
 function paint() {
 	if(!redraw_in_next_frame) return;
-	
 	surface_set_target(surface);
 		
 		draw_clear_alpha(c_white, 0);
