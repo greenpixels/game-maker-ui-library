@@ -412,13 +412,13 @@ function mouse_in_element() {
 	var _in_rectangle = true;
 	while(_parent != noone) {
 		with(_parent) {
-			if(!point_in_rectangle(mouse_x, mouse_y, room_x, room_y, room_x + width, room_y + height)) {
+			if(!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), room_x, room_y, room_x + width, room_y + height)) {
 				_in_rectangle = false;	
 			}
 		}
 		_parent = _parent.parent;
 	}
-	if(!point_in_rectangle(mouse_x, mouse_y, room_x, room_y, room_x + width, room_y + height)) {
+	if(!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), room_x, room_y, room_x + width, room_y + height)) {
 		_in_rectangle = false;	
 	}
 	return _in_rectangle;
