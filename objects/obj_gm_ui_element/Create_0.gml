@@ -267,6 +267,7 @@ function paint() {
 		
 		draw_clear_alpha(c_white, 0);
 		if(!hidden) {
+			gpu_set_blendmode_ext_sepalpha(bm_src_alpha, bm_inv_src_alpha, bm_src_alpha, bm_one);
 			//	Draw Background
 			draw_set_colour(bg_color);
 			draw_set_alpha(bg_alpha);
@@ -306,6 +307,7 @@ function paint() {
 			}
 
 		}
+		gpu_set_blendmode(bm_normal)
 	surface_reset_target();
 
 	// Draw all children first
