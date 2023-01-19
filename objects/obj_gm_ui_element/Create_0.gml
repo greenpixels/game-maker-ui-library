@@ -22,9 +22,9 @@ function validate_surface() {
  * @returns {bool} Whether the maximum width has been exceeded
  * @ignore
  */
-function check_max_width_exceeded(_width) {
+function check_max_width_exceeded(_current_row_width, _width) {
 	if(max_width != undefined) {
-		return (width + _width > max_width);	
+		return (_current_row_width + _width > max_width);	
 	} else {
 		return false;	
 	}
@@ -35,7 +35,6 @@ function check_max_width_exceeded(_width) {
  * @ignore
  */
 function layout_children() {
-	var _x = padding_left;
 	var _y = padding_top;
 	var _current_row_heighest = 0;
 	var _current_row_width = 0;
@@ -51,16 +50,16 @@ function layout_children() {
 		var _child_h = _child.margin_top + _child.height + _child.margin_bottom;
 	
 		// Check whether adding a child to this element would exceed to maximum width
-		if(check_max_width_exceeded(_child_w)) {
+		if(check_max_width_exceeded(_current_row_width, _child_w)) {
 			// Check wther the child in general is wider than the allowed width
 			if(_child_w < max_width - padding_left - padding_right) {
 				// If not, then break to the next line and repeat the layouting for this child
-				_x = padding_left;
 				_y += _current_row_heighest;
 				height += _current_row_heighest;
 				_current_row_width = 0;
 				_current_row_heighest = 0;
 				_current_row++;
+				_children_in_current_row = ds_list_find_value(_rows, _current_row);
 			}
 		}
 		
@@ -71,7 +70,6 @@ function layout_children() {
 		
 		//_child.x = _x + _child.margin_left;
 		_child.y = _y + _child.margin_top;
-		_x += _child_w;
 		
 		// Add the child to the current row
 		if(is_undefined(_children_in_current_row)) {
@@ -85,7 +83,6 @@ function layout_children() {
 		
 		// When this element has a vertical layout, then go the next line after every element
 		if(flex_direction == UI_FLEX_DIRECTION.VERTICAL) {
-			_x = padding_left;
 			_y += _current_row_heighest;
 			height += _current_row_heighest;
 			_current_row_width = 0;
@@ -107,6 +104,8 @@ function justify_rows(_rows) {
 	for(var _i = 0; _i < ds_list_size(_rows); _i++) {
 		var _children_in_row = ds_list_find_value(_rows, _i);
 		var _width_sum = 0;
+
+		
 		// Get width of all children in the current row
 		for(var _j = 0; _j < ds_list_size(_children_in_row); _j++) {
 			var _child = ds_list_find_value(_children_in_row, _j);
@@ -114,7 +113,6 @@ function justify_rows(_rows) {
 		}
 		
 		var _empty_space = width - padding_left - padding_right - _width_sum;
-		if(_empty_space <= 0) continue;
 		// Excecute the justification of space using the emtpy space
 		switch(justify_content) {
 			
@@ -196,6 +194,7 @@ function justify_rows(_rows) {
 		}
 	}
 	ds_list_destroy(_rows);
+	
 }
 
 /**
@@ -268,21 +267,22 @@ function paint() {
 		draw_clear_alpha(c_white, 0);
 		if(!hidden) {
 			gpu_set_blendmode_ext_sepalpha(bm_src_alpha, bm_inv_src_alpha, bm_src_alpha, bm_one);
+			
 			//	Draw Background
 			draw_set_colour(bg_color);
 			draw_set_alpha(bg_alpha);
 			draw_rectangle(0, 0, width, height, false);
 			draw_set_alpha(1);
+		
 			//	Draw Background Image
 			draw_sprite_fitted(bg_image, image_index, 0, 0, width, height, image_fit);
-
+			
 			// Draw Text
 			draw_set_colour(text_color);
 			draw_set_font(text_font);
 			draw_text_aligned_on_box(text_content);
 			// Draw outlines
 			draw_set_colour(outline_color);
-			
 			// Drawing rectangles seems to behave differently whether or not the target is a browser-canvas
 			// We need to add offsets to the draw process to properly account for that
 			
@@ -305,7 +305,6 @@ function paint() {
 				// Bottom
 				if(outline_bottom_strength) draw_rectangle(0, height, width, height-outline_bottom_strength, false);
 			}
-
 		}
 		gpu_set_blendmode(bm_normal)
 	surface_reset_target();
