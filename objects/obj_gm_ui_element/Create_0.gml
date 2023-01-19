@@ -6,12 +6,12 @@
  */
 function validate_surface() {
 	if(!surface_exists(surface)) {
-		surface = surface_create(max(1, width), max(1, height));
+		surface = surface_create(max(1, round(width)), max(1, round(height)));
 		redraw_in_next_frame = true;
 	} 
 	
-	if(surface_get_width(surface) != width or surface_get_height(surface) != height) {
-		surface_resize(surface, max(1, width), max(1,height));
+	if(surface_get_width(surface) != round(width) or surface_get_height(surface) != round(height)) {
+		surface_resize(surface, max(1, round(width)), max(1,round(height)));
 		redraw_in_next_frame = true;
 	}
 }
