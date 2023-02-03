@@ -1,0 +1,22 @@
+{
+  "FolderOrderSettings": [
+    {"name":"GM UI LIBRARY","order":9,"path":"folders/GM UI LIBRARY.yy",},
+    {"name":"Extended Objects","order":2,"path":"folders/GM UI LIBRARY/Extended Objects.yy",},
+    {"name":"Global","order":3,"path":"folders/GM UI LIBRARY/Global.yy",},
+    {"name":"Shaders","order":4,"path":"folders/GM UI LIBRARY/Shaders.yy",},
+    {"name":"Sprites","order":5,"path":"folders/GM UI LIBRARY/Sprites.yy",},
+  ],
+  "ResourceOrderSettings": [
+    {"name":"fnt_title","order":7,"path":"fonts/fnt_title/fnt_title.yy",},
+    {"name":"obj_gm_ui_button_secondary","order":1,"path":"objects/obj_gm_ui_button_secondary/obj_gm_ui_button_secondary.yy",},
+    {"name":"obj_gm_ui_element","order":1,"path":"objects/obj_gm_ui_element/obj_gm_ui_element.yy",},
+    {"name":"fnt_default","order":6,"path":"fonts/fnt_default/fnt_default.yy",},
+    {"name":"obj_gm_ui_textbox","order":3,"path":"objects/obj_gm_ui_textbox/obj_gm_ui_textbox.yy",},
+    {"name":"demo_room2","order":1,"path":"rooms/demo_room2/demo_room2.yy",},
+    {"name":"scr_gm_ui_utils","order":2,"path":"scripts/scr_gm_ui_utils/scr_gm_ui_utils.yy",},
+    {"name":"scr_gm_ui_error_messages","order":1,"path":"scripts/scr_gm_ui_error_messages/scr_gm_ui_error_messages.yy",},
+    {"name":"obj_gm_ui_vertical_list","order":2,"path":"objects/obj_gm_ui_vertical_list/obj_gm_ui_vertical_list.yy",},
+    {"name":"demo_room3","order":2,"path":"rooms/demo_room3/demo_room3.yy",},
+    {"name":"obj_gm_ui_row","order":4,"path":"objects/obj_gm_ui_row/obj_gm_ui_row.yy",},
+  ],
+}
